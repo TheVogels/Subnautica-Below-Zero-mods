@@ -22,13 +22,12 @@ public static class Seamoth_Patch
             SeaMoth Seamoth = __instance;
             if (!Seamoth.dockable)
             {
-                Seamoth.dockable = new Dockable
-                {
-                    vehicle = Seamoth,
-                    timeUndocked = Seamoth.timeUndocked,
-                    docked = Seamoth.docked,
-                    rb = Seamoth.useRigidbody,
-                };
+                Dockable dock = Seamoth.gameObject.AddComponent<Dockable>();
+                dock.vehicle = Seamoth;
+                dock.timeUndocked = Seamoth.timeUndocked;
+                dock.docked = Seamoth.docked;
+                dock.rb = Seamoth.useRigidbody;
+                Seamoth.dockable = dock;
                 //Seamoth.dockable = Seamoth.GetComponent<Dockable>();
                 //if((VehicleDockingBay.))
                 //Seamoth.dockable.SetDocked();
